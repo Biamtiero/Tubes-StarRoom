@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kota extends Model
+class Kota extends Model
 {
-    /** @use HasFactory<\Database\Factories\KotaFactory> */
-    use HasFactory;
+    protected $fillable = ['kota'];
+
+    public function hotels()
+    {
+        return $this->hasMany(Hotel::class, 'id_kota');
+    }
 }

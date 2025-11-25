@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fasilitas extends Model
+class Fasilitas extends Model
 {
-    /** @use HasFactory<\Database\Factories\FasilitasFactory> */
-    use HasFactory;
+    protected $fillable = ['fasilitas'];
+
+    public function hotels()
+    {
+        return $this->belongsToMany(Hotel::class, 'fasilitashotels', 'id_fasilitas', 'id_hotel');
+    }
 }

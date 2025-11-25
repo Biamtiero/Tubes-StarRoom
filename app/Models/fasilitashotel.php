@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fasilitashotel extends Model
+class FasilitasHotel extends Model
 {
-    /** @use HasFactory<\Database\Factories\FasilitashotelFactory> */
-    use HasFactory;
+    protected $table = 'fasilitashotels';
+
+    protected $fillable = ['id_hotel', 'id_fasilitas'];
 }
