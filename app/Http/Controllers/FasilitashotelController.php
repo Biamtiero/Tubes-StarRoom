@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\fasilitashotel;
-use App\Http\Requests\StorefasilitashotelRequest;
-use App\Http\Requests\UpdatefasilitashotelRequest;
+use App\Models\FasilitasHotel;
+use App\Http\Requests\StoreFasilitasHotelRequest;
+use App\Http\Requests\UpdateFasilitasHotelRequest;
 
-class FasilitashotelController extends Controller
+class FasilitasHotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class FasilitashotelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorefasilitashotelRequest $request)
+    public function store(StoreFasilitasHotelRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class FasilitashotelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(fasilitashotel $fasilitashotel)
+    public function show(FasilitasHotel $fasilitashotel)
     {
         //
     }
@@ -43,7 +43,7 @@ class FasilitashotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fasilitashotel $fasilitashotel)
+    public function edit(FasilitasHotel $fasilitashotel)
     {
         //
     }
@@ -51,7 +51,7 @@ class FasilitashotelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefasilitashotelRequest $request, fasilitashotel $fasilitashotel)
+    public function update(UpdateFasilitasHotelRequest $request, FasilitasHotel $fasilitashotel)
     {
         //
     }
@@ -59,7 +59,7 @@ class FasilitashotelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fasilitashotel $fasilitashotel)
+    public function destroy(FasilitasHotel $fasilitashotel)
     {
         //
     }

@@ -5,8 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fasilitas extends Model
+class Fasilitas extends Model
 {
     /** @use HasFactory<\Database\Factories\FasilitasFactory> */
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function fasilitasHotels()
+    {
+        return $this->belongsToMany(FasilitasHotel::class);
+    }
 }

@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\fasilitashotel;
+use App\Models\FasilitasHotel;
 use Illuminate\Auth\Access\Response;
 
-class FasilitashotelPolicy
+class FasilitasHotelPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class FasilitashotelPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, fasilitashotel $fasilitashotel): bool
+    public function view(User $user, FasilitasHotel $fasilitashotel): bool
     {
         return false;
     }
@@ -35,7 +35,7 @@ class FasilitashotelPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, fasilitashotel $fasilitashotel): bool
+    public function update(User $user, FasilitasHotel $fasilitashotel): bool
     {
         return false;
     }
@@ -43,7 +43,7 @@ class FasilitashotelPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, fasilitashotel $fasilitashotel): bool
+    public function delete(User $user, FasilitasHotel $fasilitashotel): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class FasilitashotelPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, fasilitashotel $fasilitashotel): bool
+    public function restore(User $user, FasilitasHotel $fasilitashotel): bool
     {
         return false;
     }
@@ -59,7 +59,7 @@ class FasilitashotelPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, fasilitashotel $fasilitashotel): bool
+    public function forceDelete(User $user, FasilitasHotel $fasilitashotel): bool
     {
         return false;
     }

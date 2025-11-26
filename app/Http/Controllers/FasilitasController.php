@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\fasilitas;
-use App\Http\Requests\StorefasilitasRequest;
-use App\Http\Requests\UpdatefasilitasRequest;
+use App\Models\Fasilitas;
+use App\Http\Requests\StoreFasilitasRequest;
+use App\Http\Requests\UpdateFasilitasRequest;
 
 class FasilitasController extends Controller
 {
@@ -27,7 +27,7 @@ class FasilitasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorefasilitasRequest $request)
+    public function store(StoreFasilitasRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class FasilitasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(fasilitas $fasilitas)
+    public function show(Fasilitas $fasilitas)
     {
         //
     }
@@ -51,7 +51,7 @@ class FasilitasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefasilitasRequest $request, fasilitas $fasilitas)
+    public function update(UpdateFasilitasRequest $request, Fasilitas $fasilitas)
     {
         //
     }
@@ -59,7 +59,7 @@ class FasilitasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fasilitas $fasilitas)
+    public function destroy(Fasilitas $fasilitas)
     {
         //
     }

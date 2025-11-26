@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kamar;
-use App\Http\Requests\StorekamarRequest;
-use App\Http\Requests\UpdatekamarRequest;
+use App\Models\Kamar;
+use App\Http\Requests\StoreKamarRequest;
+use App\Http\Requests\UpdateKamarRequest;
 
 class KamarController extends Controller
 {
@@ -27,7 +27,7 @@ class KamarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorekamarRequest $request)
+    public function store(StoreKamarRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class KamarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(kamar $kamar)
+    public function show(Kamar $kamar)
     {
         //
     }
