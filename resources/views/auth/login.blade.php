@@ -1,130 +1,59 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gray-900">
-        <!-- Particles Background -->
-        <canvas id="particles-canvas" class="absolute inset-0"></canvas>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <div class="max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-lg z-10">
-            <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-white">Welcome Back</h2>
-                <p class="text-gray-400 mt-2">Sign in to your account</p>
-            </div>
-
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-
-                <!-- Email Address -->
-                <div class="mb-4">
-                    <x-input-label for="email" :value="__('Email')" class="text-white" />
-                    <x-text-input id="email" class="block mt-1 w-full bg-gray-700 border-gray-600 text-white"
-                        type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" class="text-white" />
-
-                    <x-text-input id="password" class="block mt-1 w-full bg-gray-700 border-gray-600 text-white"
-                        type="password" name="password" required autocomplete="current-password" />
-
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
-
-                <!-- Remember Me -->
-                <div class="block mt-4">
-                    <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox"
-                            class="rounded bg-gray-700 border-gray-600 text-indigo-600 focus:ring-indigo-500"
-                            name="remember">
-                        <span class="ml-2 text-sm text-gray-300">{{ __('Remember me') }}</span>
-                    </label>
-                </div>
-
-                <div class="flex items-center justify-between mt-6">
-                    @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-400 hover:text-white"
-                            href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    @endif
-
-                    <x-primary-button class="ml-3 bg-indigo-600 hover:bg-indigo-700">
-                        {{ __('Log in') }}
-                    </x-primary-button>
-                </div>
-
-                <div class="mt-6 text-center">
-                    <p class="text-gray-400">
-                        Don't have an account?
-                        <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300 font-medium">
-                            Sign up
-                        </a>
-                    </p>
-                </div>
-            </form>
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+                autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-    </div>
 
-    <script>
-        // Particles background script (sama seperti di layout utama)
-        function initParticles() {
-            const canvas = document.getElementById("particles-canvas");
-            if (!canvas) return;
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
 
-            const ctx = canvas.getContext("2d");
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                autocomplete="current-password" />
 
-            const particles = [];
-            const particleCount = 30;
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.size = Math.random() * 2 + 1;
-                    this.opacity = Math.random() * 0.3 + 0.1;
-                }
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox"
+                    class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                    name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
 
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
 
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                }
+            <x-primary-button class="ms-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
 
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach((particle) => {
-                    particle.update();
-                    particle.draw();
-                });
-
-                requestAnimationFrame(animateParticles);
-            }
-
-            animateParticles();
-        }
-
-        document.addEventListener('DOMContentLoaded', initParticles);
-    </script>
+        <div class="flex items-center justify-center mt-4">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ __("Don't have an account?") }}
+                <a href="{{ route('register') }}"
+                    class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 font-medium">
+                    {{ __('Sign up') }}
+                </a>
+            </p>
+        </div>
+    </form>
 </x-guest-layout>

@@ -5,7 +5,7 @@
             <a href="index.html">Beranda</a>
             <a href="HomePage/pilihkota/">Kota</a>
             <a href="HomePage/pilihhotel/">Hotel</a>
-            <a href="HomePage/pilihhotel/">Login</a>
+            <a href="/login">Login</a>
             <a id="log"></a>
         </div>
     </nav>
