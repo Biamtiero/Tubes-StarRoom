@@ -8,9 +8,9 @@
 
     <div id="load" class="load">
         <div class="load-content">
-            <div id="load-status"></div>
-            <h1 id="load-title"></h1>
-            <h3 id="load-text"></h3>
+            <div id="load-status">⭐</div>
+            <h1 id="load-title">StarRoom</h1>
+            <h3 id="load-text">Memuat pengalaman terbaik...</h3>
         </div>
     </div>
 
@@ -41,10 +41,11 @@
                     </div>
                 </div>
                 <div class="hero-buttons fade-in-element">
-                    <button class="btn-primary magnetic-btn" onclick="location.href='login/'">
+                    <button class="btn-primary magnetic-btn" onclick="location.href='/login'">
                         Mulai Pencarian 🔍
                     </button>
-                    <button class="btn-secondary magnetic-btn" onclick="scrollToAbout()">
+                    <button class="btn-secondary magnetic-btn"
+                        onclick="document.querySelector('.about-section').scrollIntoView({behavior: 'smooth'})">
                         Pelajari Lebih Lanjut
                     </button>
                 </div>
@@ -59,7 +60,8 @@
                         </div>
                     </div>
                     <div class="card-image">
-                        <img src="Assets/hotel/Bali/nusaduahotel.jpg" alt="Kamar Premium" class="room-photo" />
+                        <img src="{{ asset('assets/hotel/NusaDuaBali.jpeg') }}" alt="Kamar Premium"
+                            class="room-photo" />
                     </div>
                     <div class="card-footer">
                         <span class="price">Rp 550.000 / malam</span>
@@ -148,7 +150,7 @@
                     StarRoom
                 </p>
                 <div class="cta-buttons">
-                    <button class="btn-primary large" onclick="location.href='login/'">
+                    <button class="btn-primary" onclick="location.href='/login'">
                         Mulai Sekarang 🚀
                     </button>
                 </div>

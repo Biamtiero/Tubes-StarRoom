@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarRoom</title>
+    <title>@yield('title', 'StarRoom - Booking Hotel Terbaik')</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -221,16 +221,6 @@
             });
         }
 
-        // ==================== SMOOTH SCROLLING ====================
-        function scrollToAbout() {
-            const tentangSection = document.getElementById("tentang");
-            if (tentangSection) {
-                tentangSection.scrollIntoView({
-                    behavior: "smooth",
-                });
-            }
-        }
-
         // ==================== PARALLAX EFFECT ====================
         function handleParallax() {
             const scrolled = window.pageYOffset;
@@ -241,7 +231,6 @@
                 element.style.transform = `translateY(${speed}px)`;
             });
 
-            // Floating elements parallax
             const floatingElements = document.querySelectorAll(".floating-element");
             floatingElements.forEach((element, index) => {
                 const speed = scrolled * (0.1 + index * 0.05);
@@ -251,17 +240,11 @@
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize particles
             initParticles();
-
-            // Start typing animation
             initTypingAnimation();
-
-            // Initialize effects
             initTiltEffect();
             initMagneticButtons();
 
-            // Start counter animation when visible
             const statNumbers = document.querySelectorAll(".stat-number");
             if (statNumbers.length > 0) {
                 const observer = new IntersectionObserver((entries) => {
@@ -276,11 +259,17 @@
                 statNumbers.forEach((stat) => observer.observe(stat));
             }
 
-            // Initial scroll animations check
             handleScrollAnimations();
+
+            const loadOverlay = document.getElementById('load');
+            if (loadOverlay) {
+                setTimeout(() => {
+                    loadOverlay.classList.add('hidden');
+                    setTimeout(() => loadOverlay.remove(), 600);
+                }, 500);
+            }
         });
 
-        // Event listeners
         window.addEventListener("scroll", () => {
             handleScrollAnimations();
             handleParallax();
