@@ -11,8 +11,8 @@ class Fasilitas extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function fasilitasHotels()
+    public function fasilitasHotel()
     {
-        return $this->belongsToMany(FasilitasHotel::class);
+        return $this->hasMany(FasilitasHotel::class);
     }
 }

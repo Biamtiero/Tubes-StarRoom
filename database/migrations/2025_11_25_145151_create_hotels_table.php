@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->string('nama_hotel');
-            $table->string('id_kota');
+            $table->unsignedBigInteger('id_kota');
             $table->integer('bintang');
             $table->text('alamat');
             $table->string('foto');

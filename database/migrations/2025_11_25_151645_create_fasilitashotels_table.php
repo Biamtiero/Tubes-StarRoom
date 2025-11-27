@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('fasilitashotels', function (Blueprint $table) {
             $table->id();
-            $table->string('id_hotel');
-            $table->string('id_fasilitas');
+            $table->unsignedBigInteger('id_hotel');
+            $table->unsignedBigInteger('id_fasilitas');
             $table->timestamps();
         });
     }

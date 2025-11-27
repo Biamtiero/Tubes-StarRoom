@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
-            $table->string('id_hotel');
+            $table->unsignedBigInteger('id_hotel');
             $table->enum('tipe_kamar', ['Standar', 'Suite', 'Presidential']);
             $table->integer('kapasitas');
             $table->integer('harga');
