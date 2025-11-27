@@ -1,3 +1,343 @@
-@use "../../node_modules/bootstrap/scss/bootstrap";
+// Bootstrap
+@use "bootstrap/scss/bootstrap";
 
+// Import Custom Styles
 @import "style";
+
+// ==================== VARIABLES ====================
+$primary-color: #6366f1;
+$primary-dark: #4f46e5;
+$secondary-color: #f8fafc;
+$text-dark: #1e293b;
+$text-light: #64748b;
+$border-color: #e2e8f0;
+$shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// ==================== RESET & BASE STYLES ====================
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+// ==================== NAVBAR STYLES ====================
+.navbar-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: $primary-color;
+    transition: transform 0.3s ease;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.navbar-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+
+        &.active {
+            display: flex;
+        }
+    }
+}
+
+.nav-link {
+    text-decoration: none;
+    color: $text-dark;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary-color;
+        transition: width 0.3s ease;
+    }
+
+    &:hover {
+        color: $primary-color;
+
+        &::after {
+            width: 100%;
+        }
+    }
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, $primary-color, $primary-dark);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.nav-user-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+}
+
+.nav-username {
+    font-weight: 500;
+    color: $text-dark;
+
+    @media (max-width: 768px) {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.nav-logout {
+    margin: 0;
+    display: inline;
+
+    button {
+        background: none;
+        border: none;
+        padding: 0;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+
+    @media (max-width: 768px) {
+        display: flex;
+    }
+
+    span {
+        width: 25px;
+        height: 3px;
+        background: $text-dark;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+}
+
+// ==================== CANVAS PARTICLES ====================
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+// ==================== FLOATING ELEMENTS ====================
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    animation: float 6s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+
+    &.floating-1 {
+        width: 80px;
+        height: 80px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    &.floating-2 {
+        width: 60px;
+        height: 60px;
+        top: 20%;
+        right: 15%;
+        animation-delay: 2s;
+    }
+
+    &.floating-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+    }
+
+    &.floating-4 {
+        width: 70px;
+        height: 70px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 1s;
+    }
+
+    &.floating-5 {
+        width: 90px;
+        height: 90px;
+        bottom: 10%;
+        right: 20%;
+        animation-delay: 3s;
+    }
+
+    &.floating-6 {
+        width: 50px;
+        height: 50px;
+        top: 40%;
+        left: 5%;
+        animation-delay: 5s;
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50px, -50px) rotate(180deg);
+    }
+}
+
+// ==================== LOADING SCREEN ====================
+.load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .load-content {
+        text-align: center;
+        color: white;
+
+        #load-status {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        #load-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #load-text {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
