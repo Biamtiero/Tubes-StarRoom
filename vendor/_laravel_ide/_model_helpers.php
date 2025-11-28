@@ -13,6 +13,10 @@ namespace App\Models {
      * @property string $email
      * @property string $name
      * @property int $id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Pemesanan> $pemesanan
+     * @property-read int|null $pemesanan_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Review> $review
+     * @property-read int|null $review_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
      * @property-read int|null $notifications_count
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereId($value)
@@ -330,8 +334,8 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string $fasilitas
      * @property int $id
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\FasilitasHotel> $fasilitasHotels
-     * @property-read int|null $fasilitasHotels_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\FasilitasHotel> $fasilitasHotel
+     * @property-read int|null $fasilitasHotel_count
      * @method static \Illuminate\Database\Eloquent\Builder<Fasilitas>|Fasilitas whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Fasilitas>|Fasilitas whereFasilitas($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Fasilitas>|Fasilitas whereCreatedAt($value)
@@ -640,6 +644,7 @@ namespace App\Models {
      * App\Models\FasilitasHotel
      *
      * @property-read \App\Models\Fasilitas $fasilitas
+     * @property-read \App\Models\Hotel $hotel
      * @method static \Illuminate\Database\Eloquent\Builder<FasilitasHotel>|FasilitasHotel newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<FasilitasHotel>|FasilitasHotel newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<FasilitasHotel>|FasilitasHotel query()
@@ -951,6 +956,11 @@ namespace App\Models {
      * @property int $id_kota
      * @property string $nama_hotel
      * @property int $id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Kamar> $kamar
+     * @property-read int|null $kamar_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\FasilitasHotel> $fasilitasHotel
+     * @property-read int|null $fasilitasHotel_count
+     * @property-read \App\Models\Kota $kota
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereNamaHotel($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereIdKota($value)
@@ -1270,6 +1280,7 @@ namespace App\Models {
      * @property mixed $tipe_kamar
      * @property int $id_hotel
      * @property int $id
+     * @property-read \App\Models\Hotel $hotel
      * @method static \Illuminate\Database\Eloquent\Builder<Kamar>|Kamar whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Kamar>|Kamar whereIdHotel($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Kamar>|Kamar whereTipeKamar($value)
@@ -1585,6 +1596,8 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string $kota
      * @property int $id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Hotel> $hotel
+     * @property-read int|null $hotel_count
      * @method static \Illuminate\Database\Eloquent\Builder<Kota>|Kota whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Kota>|Kota whereKota($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Kota>|Kota whereCreatedAt($value)
@@ -1903,6 +1916,8 @@ namespace App\Models {
      * @property int $id_kamar
      * @property int $id_user
      * @property int $id
+     * @property-read \App\Models\User $user
+     * @property-read \App\Models\Kamar $kamar
      * @method static \Illuminate\Database\Eloquent\Builder<Pemesanan>|Pemesanan whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Pemesanan>|Pemesanan whereIdUser($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Pemesanan>|Pemesanan whereIdKamar($value)
@@ -2221,9 +2236,11 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string $ulasan
      * @property int $rating
-     * @property string $id_user
-     * @property string $id_hotel
+     * @property int $id_user
+     * @property int $id_hotel
      * @property int $id
+     * @property-read \App\Models\User $user
+     * @property-read \App\Models\Hotel $hotel
      * @method static \Illuminate\Database\Eloquent\Builder<Review>|Review whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Review>|Review whereIdHotel($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Review>|Review whereIdUser($value)

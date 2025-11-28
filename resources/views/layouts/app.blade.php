@@ -9,7 +9,7 @@
     <title>@yield('title', 'StarRoom')</title>
 
     <!-- Vite Assets -->
-    @vite(['resources/sass/style.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/.scss', 'resources/js/app.js'])
 
     <!-- Additional Styles -->
     @stack('styles')

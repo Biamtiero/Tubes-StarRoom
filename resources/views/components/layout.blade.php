@@ -261,13 +261,13 @@
 
             handleScrollAnimations();
 
-            const loadOverlay = document.getElementById('load');
-            if (loadOverlay) {
-                setTimeout(() => {
-                    loadOverlay.classList.add('hidden');
-                    setTimeout(() => loadOverlay.remove(), 600);
-                }, 500);
-            }
+            // Hide loading screen after page loads
+            setTimeout(() => {
+                const loadScreen = document.getElementById('load');
+                if (loadScreen) {
+                    loadScreen.classList.add('hidden');
+                }
+            }, 1500);
         });
 
         window.addEventListener("scroll", () => {

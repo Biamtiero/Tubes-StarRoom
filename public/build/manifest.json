@@ -5,14 +5,19 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-di-GGlkx.js",
+    "file": "assets/app-CnbQGWIW.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-6nx3-04c.css",
+    "file": "assets/app-Dde_xz1O.css",
     "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
+  "resources/sass/login.scss": {
+    "file": "assets/login-BkkpmUIn.css",
+    "src": "resources/sass/login.scss",
     "isEntry": true
   }
 }
